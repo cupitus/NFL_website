@@ -41,22 +41,22 @@ const Footer = () => {
           <ul className="space-y-2 text-gray-600">
             <li>
               <Link to="#" className="hover:text-gray-500 transition-colors">
-                Men's Top Wear
+                Men's Wear
               </Link>
             </li>
             <li>
               <Link to="#" className="hover:text-gray-500 transition-colors">
-                Women's Top Wear
+                Women's Wear
               </Link>
             </li>
             <li>
               <Link to="#" className="hover:text-gray-500 transition-colors">
-                Men's Bottom Wear
+                Equipment
               </Link>
             </li>
             <li>
               <Link to="#" className="hover:text-gray-500 transition-colors">
-                Women's Bottom Wear
+                Accessories
               </Link>
             </li>
           </ul>
@@ -126,7 +126,7 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="container mx-auto mt-12 px-4 lg:px-0 border-t border-gray-200 pt-6">
         <p className="text-gray-500 text-sm tracking-tighter text-center">
-          © 2025, CompileTab. All Rights Reserved.
+          © 2025, Blitz Bazzar. All Rights Reserved.
         </p>
       </div>
     </footer>
