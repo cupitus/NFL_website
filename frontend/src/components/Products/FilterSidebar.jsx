@@ -17,7 +17,8 @@ const FilterSidebar = () => {
 
   const [priceRange, setPriceRange] = useState([0, 100]);
 
-  const categories = ["Top Wear", "Bottom Wear"];
+  const categories = ["Top Wear", "Bottom Wear",  "Accessories", "Equipments"
+  ];
 
   const colors = [
     "Red",
@@ -45,13 +46,15 @@ const FilterSidebar = () => {
     "Fleece",
   ];
 
-  const brands = [
-    "Urban Threads",
-    "Modern Fit",
-    "Street Style",
-    "Beach Breeze",
-    "Fashionista",
-    "ChicStyle",
+  const brands = [  // NFL Teams
+    "Arizona Cardinals",
+    "Atlanta Falcons",
+    "Baltimore Ravens",
+    "Green Bay Packers",
+    "New England Patriots",
+    "San Francisco 49ers",
+    "Pittsburgh Steelers",
+    "Philadelphia Eagles",
   ];
 
   const genders = ["Men", "Women"];
@@ -208,7 +211,7 @@ const FilterSidebar = () => {
 
       {/* Brand Filter */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-medium mb-2">Brand</label>
+        <label className="block text-gray-600 font-medium mb-2">NFL Teams</label>
         {brands.map((brand) => (
           <div key={brand} className="flex items-center mb-1">
             <input
