@@ -33,6 +33,26 @@ const EditProductPage = () => {
 
   const [uploading, setUploading] = useState(false); // Image uploading state
 
+  // Add predefined options for dropdowns
+  const brandOptions = [
+    "Arizona Cardinals",
+    "Atlanta Falcons",
+    "Baltimore Ravens",
+    "Green Bay Packers",
+    "New England Patriots",
+    "San Francisco 49ers",
+    "Pittsburgh Steelers",
+    "Philadelphia Eagles"
+  ];
+  const genderOptions = ["Men", "Women", "Unisex"];
+  const colorOptions = ["Black", "White", "Red", "Blue", "Green", "Yellow", "Purple", "Pink", "Gray", "Brown"];
+  const categoryOptions = [
+    "Top Wear",
+    "Bottom Wear",
+    "Accessories",
+    "Equipment"
+  ];
+
   useEffect(() => {
     if (id) {
       dispatch(fetchProductDetails(id));
@@ -176,23 +196,89 @@ const EditProductPage = () => {
           />
         </div>
 
-        {/* Colors */}
+        {/* Category Dropdown */}
         <div className="mb-6">
-          <label className="block font-semibold mb-2">
-            Colors (comma-separated)
-          </label>
-          <input
-            type="text"
-            name="colors"
-            value={productData.colors.join(", ")}
-            onChange={(e) =>
-              setProductData({
-                ...productData,
-                colors: e.target.value.split(",").map((color) => color.trim()),
-              })
-            }
+          <label className="block font-semibold mb-2">Category</label>
+          <select
+            name="category"
+            value={productData.category}
+            onChange={handleChange}
             className="w-full border border-gray-300 rounded-md p-2"
-          />
+            required
+          >
+            <option value="">Select a category</option>
+            {categoryOptions.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Brand Dropdown */}
+        <div className="mb-6">
+          <label className="block font-semibold mb-2">Brand</label>
+          <select
+            name="brand"
+            value={productData.brand}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-md p-2"
+          >
+            <option value="">Select a brand</option>
+            {brandOptions.map((brand) => (
+              <option key={brand} value={brand}>
+                {brand}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Gender Dropdown */}
+        <div className="mb-6">
+          <label className="block font-semibold mb-2">Gender</label>
+          <select
+            name="gender"
+            value={productData.gender}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-md p-2"
+          >
+            <option value="">Select gender</option>
+            {genderOptions.map((gender) => (
+              <option key={gender} value={gender}>
+                {gender}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Colors Multi-select */}
+        <div className="mb-6">
+          <label className="block font-semibold mb-2">Colors</label>
+          <div className="grid grid-cols-2 gap-2">
+            {colorOptions.map((color) => (
+              <div key={color} className="flex items-center">
+                <input
+                  type="checkbox"
+                  id={color}
+                  checked={productData.colors.includes(color)}
+                  onChange={(e) => {
+                    const newColors = e.target.checked
+                      ? [...productData.colors, color]
+                      : productData.colors.filter((c) => c !== color);
+                    setProductData({ ...productData, colors: newColors });
+                  }}
+                  className="mr-2"
+                />
+                <label htmlFor={color} className="flex items-center">
+                  <span
+                    className="w-4 h-4 rounded-full mr-2"
+                    style={{ backgroundColor: color.toLowerCase() }}
+                  ></span>
+                  {color}
+                </label>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Image Upload */}

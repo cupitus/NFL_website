@@ -35,6 +35,7 @@ const FilterSidebar = () => {
     "Pink",
     "Beige",
     "Navy",
+    "Purple",
   ];
 
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
