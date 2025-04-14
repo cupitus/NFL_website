@@ -1,4 +1,4 @@
-// product.js
+// Dummy data for products
 
 const products = [
   {
