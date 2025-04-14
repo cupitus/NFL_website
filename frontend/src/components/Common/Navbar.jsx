@@ -52,16 +52,16 @@ const Navbar = () => {
            Women
           </Link>
           <Link
-            to="/collections/all?category=Equipments"
+            to="/collections/all?category=Equipment"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
             Equipment
           </Link>
           <Link
-            to="/collections/all?category=accessories"
+            to="/collections/all?category=Accessories"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
-            Accessories 
+            Accessories
           </Link>
         </div>
         {/* Right - Icons */}
@@ -130,14 +130,14 @@ const Navbar = () => {
               Women
             </Link>
             <Link
-              to="/collections/all?category=Equipments"
+              to="/collections/all?category=Equipment"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
-              Equipment 
+              Equipment
             </Link>
             <Link
-              to="/collections/all?category=accessories"
+              to="/collections/all?category=Accessories"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
