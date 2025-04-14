@@ -303,8 +303,14 @@ router.get("/similar/:id", async (req, res) => {
 
     const similarProducts = await Product.find({
       _id: { $ne: id }, // Exclude the current product ID
-      gender: product.gender,
-      category: product.category,
+      $or: [
+        // Match same gender and category
+        { gender: product.gender, category: product.category },
+        // Match unisex products in same category
+        { gender: "Unisex", category: product.category },
+        // Match equipment in same category
+        { category: product.category, collections: { $regex: "Equipment", $options: "i" } }
+      ]
     }).limit(4);
 
     res.json(similarProducts);
