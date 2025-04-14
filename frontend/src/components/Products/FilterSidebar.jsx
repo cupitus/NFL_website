@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearFilters } from "../../redux/slices/productsSlice";
 
 const FilterSidebar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [filters, setFilters] = useState({
     category: "",
     gender: "",
     color: "",
     size: [],
     material: [],
-    NFL_teams: [],
+    brand: [],
     minPrice: 0,
     maxPrice: 100,
   });
@@ -73,7 +76,7 @@ const FilterSidebar = () => {
       color: params.color || "",
       size: params.size ? params.size.split(",") : [],
       material: params.material ? params.material.split(",") : [],
-      NFL_teams: params.NFL_teams ? params.NFL_teams.split(",") : [],
+      brand: params.brand ? params.brand.split(",") : [],
       minPrice: params.minPrice || 0,
       maxPrice: params.maxPrice || 100,
     });
@@ -119,9 +122,34 @@ const FilterSidebar = () => {
     updateURLParams(newFilters);
   };
 
+  const handleResetFilters = () => {
+    setFilters({
+      category: "",
+      gender: "",
+      color: "",
+      size: [],
+      material: [],
+      brand: [],
+      minPrice: 0,
+      maxPrice: 100,
+    });
+    setPriceRange([0, 100]);
+    setSearchParams(new URLSearchParams());
+    dispatch(clearFilters());
+    navigate("/collections/all");
+  };
+
   return (
     <div className="p-4">
-      <h3 className="text-xl font-medium text-gray-800 mb-4">Filter</h3>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-medium text-gray-800">Filter</h3>
+        <button
+          onClick={handleResetFilters}
+          className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+        >
+          Reset Filters
+        </button>
+      </div>
 
       {/* Category Filter */}
       <div className="mb-6">
@@ -221,10 +249,10 @@ const FilterSidebar = () => {
           <div key={brand} className="flex items-center mb-1">
             <input
               type="checkbox"
-              name="NFL_teams"
+              name="brand"
               value={brand}
               onChange={handleFilterChange}
-              checked={filters.NFL_teams.includes(brand)}
+              checked={filters.brand.includes(brand)}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
             <span className="text-gray-700">{brand}</span>
