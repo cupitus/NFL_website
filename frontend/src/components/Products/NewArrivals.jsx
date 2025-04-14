@@ -78,8 +78,8 @@ const NewArrivals = () => {
       <div className="container mx-auto text-center mb-10 relative">
         <h2 className="text-3xl font-bold mb-4">Explore New Arrivals</h2>
         <p className="text-lg text-gray-600 mb-8">
-          Discover the latest styles straight off the runway, freshly added to
-          keep your wardrobe on the cutting edge of fashion.
+          Discover the latest styles to get in the Games. Don't miss out on our
+          new arrivals! Shop now and elevate your game with our latest 
         </p>
 
         {/* Scroll Buttons */}
