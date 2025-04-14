@@ -10,14 +10,18 @@ const FilterSidebar = () => {
     color: "",
     size: [],
     material: [],
-    brand: [],
+    NFL_teams: [],
     minPrice: 0,
     maxPrice: 100,
   });
 
   const [priceRange, setPriceRange] = useState([0, 100]);
 
-  const categories = ["Top Wear", "Bottom Wear",  "Accessories", "Equipments"
+  const categories = [
+    "Top Wear",
+    "Bottom Wear",
+    "Accessories",
+    "Equipments"
   ];
 
   const colors = [
@@ -68,7 +72,7 @@ const FilterSidebar = () => {
       color: params.color || "",
       size: params.size ? params.size.split(",") : [],
       material: params.material ? params.material.split(",") : [],
-      brand: params.brand ? params.brand.split(",") : [],
+      NFL_teams: params.NFL_teams ? params.NFL_teams.split(",") : [],
       minPrice: params.minPrice || 0,
       maxPrice: params.maxPrice || 100,
     });
@@ -209,20 +213,20 @@ const FilterSidebar = () => {
         ))}
       </div>
 
-      {/* Brand Filter */}
+      {/* NFL Teams Filter */}
       <div className="mb-6">
         <label className="block text-gray-600 font-medium mb-2">NFL Teams</label>
-        {brands.map((brand) => (
-          <div key={brand} className="flex items-center mb-1">
+        {brands.map((team) => (
+          <div key={team} className="flex items-center mb-1">
             <input
               type="checkbox"
-              name="brand"
-              value={brand}
+              name="NFL_teams"
+              value={team}
               onChange={handleFilterChange}
-              checked={filters.brand.includes(brand)}
+              checked={filters.NFL_teams.includes(team)}
               className="mr-2 h-4 w-4 text-blue-500 focus:ring-blue-400 border-gray-300"
             />
-            <span className="text-gray-700">{brand}</span>
+            <span className="text-gray-700">{team}</span>
           </div>
         ))}
       </div>
