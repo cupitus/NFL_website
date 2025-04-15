@@ -15,10 +15,10 @@ const FilterSidebar = () => {
     material: [],
     brand: [],
     minPrice: 0,
-    maxPrice: 100,
+    maxPrice: 500,
   });
 
-  const [priceRange, setPriceRange] = useState([0, 100]);
+  const [priceRange, setPriceRange] = useState([0, 500]);
 
   const categories = [
     "Top Wear",
@@ -78,9 +78,9 @@ const FilterSidebar = () => {
       material: params.material ? params.material.split(",") : [],
       brand: params.brand ? params.brand.split(",") : [],
       minPrice: params.minPrice || 0,
-      maxPrice: params.maxPrice || 100,
+      maxPrice: params.maxPrice || 500,
     });
-    setPriceRange([0, params.maxPrice || 100]);
+    setPriceRange([0, params.maxPrice || 500]);
   }, [searchParams]);
 
   const handleFilterChange = (e) => {
@@ -131,9 +131,9 @@ const FilterSidebar = () => {
       material: [],
       brand: [],
       minPrice: 0,
-      maxPrice: 100,
+      maxPrice: 500,
     });
-    setPriceRange([0, 100]);
+    setPriceRange([0, 500]);
     setSearchParams(new URLSearchParams());
     dispatch(clearFilters());
     navigate("/collections/all");
@@ -269,7 +269,7 @@ const FilterSidebar = () => {
           type="range"
           name="priceRange"
           min={0}
-          max={100}
+          max={500}
           value={priceRange[1]}
           onChange={handlePriceChange}
           className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
