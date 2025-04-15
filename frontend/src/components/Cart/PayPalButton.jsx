@@ -5,6 +5,7 @@ const PayPalButton = ({ amount, onSuccess, onError }) => {
     <PayPalScriptProvider
       options={{
         "client-id": import.meta.env.VITE_PAYPAL_CLIENT_ID,
+        currency: "GBP"
       }}
     >
       <PayPalButtons
@@ -12,7 +13,12 @@ const PayPalButton = ({ amount, onSuccess, onError }) => {
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [
-              { amount: { value: parseFloat(amount).toFixed(2) } },
+              { 
+                amount: { 
+                  value: parseFloat(amount).toFixed(2),
+                  currency_code: "GBP"
+                } 
+              },
             ],
           });
         }}
