@@ -20,7 +20,7 @@ router.post("/subscribe", async (req, res) => {
       return res.status(400).json({ message: "email is already subscribed" });
     }
 
-    //  Create a new subscriber
+    //  Create a new subscribers
     subscriber = new Subscriber({ email });
     await subscriber.save();
 
