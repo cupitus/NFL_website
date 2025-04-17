@@ -142,7 +142,7 @@ const ProductDetails = ({ productId }) => {
               </p>
 
               <div className="mb-4">
-                <p className="text-gray-700">Color:</p>
+                <p className="text-gray-700">Colour:</p>
                 <div className="flex gap-2 mt-2">
                   {selectedProduct.colors.map((color) => (
                     <button
