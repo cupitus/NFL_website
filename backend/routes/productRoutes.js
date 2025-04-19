@@ -1,13 +1,14 @@
 const express = require("express");
 const Product = require("../models/Product");
 const { protect, admin } = require("../middleware/authMiddleware");
+const allowCors = require("../middleware/cors");
 
 const router = express.Router();
 
 // @route POST /api/products
 // @desc Create a new Product
 // @access Private/Admin
-router.post("/", protect, admin, async (req, res) => {
+router.post("/", protect, admin, allowCors(async (req, res) => {
   try {
     const {
       name,
@@ -60,7 +61,7 @@ router.post("/", protect, admin, async (req, res) => {
     console.error(error);
     res.status(500).send("Server Error");
   }
-});
+}));
 
 // @route PUT /api/products/:id
 // @desc Update an existing product ID

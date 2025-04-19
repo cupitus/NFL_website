@@ -1,13 +1,14 @@
 const express = require("express");
 const User = require("../models/User");
 const { protect, admin } = require("../middleware/authMiddleware");
+const allowCors = require("../middleware/cors");
 
 const router = express.Router();
 
 // @route GET /api/admin/users
 // @desc Get all users (Admin only)
 // @access Private/Admin
-router.get("/", protect, admin, async (req, res) => {
+router.get("/", protect, admin, allowCors(async (req, res) => {
   try {
     const users = await User.find({});
     res.json(users);
@@ -15,7 +16,7 @@ router.get("/", protect, admin, async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
-});
+}));
 
 // @route POST /api/admin/users
 // @desc Add a new user (admin only)

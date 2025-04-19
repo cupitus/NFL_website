@@ -2,12 +2,13 @@ const express = require("express");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const { protect } = require("../middleware/authMiddleware");
+const allowCors = require("../middleware/cors");
 const router = express.Router();
 
 // @route POST /api/users/register
 // @desc Register a new user
 // @access Public
-router.post("/register", async (req, res) => {
+router.post("/register", allowCors(async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
@@ -46,7 +47,7 @@ router.post("/register", async (req, res) => {
     console.log(error);
     res.status(500).send("Server Error");
   }
-});
+}));
 
 // @route POST /api/users/login
 // @desc Authenticate user

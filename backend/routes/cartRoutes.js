@@ -2,6 +2,7 @@ const express = require("express");
 const Cart = require("../models/Cart");
 const Product = require("../models/Product");
 const { protect } = require("../middleware/authMiddleware");
+const allowCors = require("../middleware/cors");
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ const getCart = async (userId, guestId) => {
 // @route POST /api/cart
 // @desc Add a product to the cart for a guest or logged in user
 // @access Public
-router.post("/", async (req, res) => {
+router.post("/", allowCors(async (req, res) => {
   const { productId, quantity, size, color, guestId, userId } = req.body;
   try {
     const product = await Product.findById(productId);
@@ -83,7 +84,7 @@ router.post("/", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
-});
+}));
 
 // @route PUT /api/cart
 // @desc Update product quantity in the cart for a guest or logged-in user

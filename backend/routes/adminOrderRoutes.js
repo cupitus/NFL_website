@@ -1,13 +1,14 @@
 const express = require("express");
 const Order = require("../models/Order");
 const { protect, admin } = require("../middleware/authMiddleware");
+const allowCors = require("../middleware/cors");
 
 const router = express.Router();
 
 // @route GET /api/admin/orders
 // @desc Get all order (Admin only)
 // @access Private/Admin
-router.get("/", protect, admin, async (req, res) => {
+router.get("/", protect, admin, allowCors(async (req, res) => {
   try {
     const orders = await Order.find({}).populate("user", "name email");
     res.json(orders);
@@ -15,7 +16,7 @@ router.get("/", protect, admin, async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
-});
+}));
 
 // @route PUT /api/admin/orders/:id
 // @desc Update order status
