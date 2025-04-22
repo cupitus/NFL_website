@@ -13,18 +13,13 @@ const adminRoutes = require("./routes/adminRoutes");
 const productAdminRoutes = require("./routes/productAdminRoutes");
 const adminOrderRoutes = require("./routes/adminOrderRoutes");
 
-// Load environment variables first
-dotenv.config();
-
-// Verify MONGO_URI is available
-if (!process.env.MONGO_URI) {
-  console.error("FATAL ERROR: MONGO_URI is not defined in environment variables");
-  process.exit(1);
-}
-
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
 connectDB();
@@ -47,5 +42,6 @@ app.use("/api/admin/users", adminRoutes);
 app.use("/api/admin/products", productAdminRoutes);
 app.use("/api/admin/orders", adminOrderRoutes);
 
-// Export the Express API
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
