@@ -13,7 +13,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // target: 'http://localhost:3000', // Development
-        target: 'https://nfl-website-jbrw.vercel.app', // Production
+        target: 'https://nfl-website-5mxr.vercel.app', // Production
         changeOrigin: true,
       },
     },
