@@ -17,7 +17,7 @@ const Hero = () => {
             Lets get you ready for the season
           </p>
           <Link
-            to="#"
+            to="/collections/all?"
             className="bg-black text-white-950 px-6 py-2 rounded-sm text-lg"
           >
             Shop Now
