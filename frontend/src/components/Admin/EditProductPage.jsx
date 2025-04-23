@@ -78,7 +78,7 @@ const EditProductPage = () => {
     try {
       setUploading(true);
       const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
+        '/api/upload',
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

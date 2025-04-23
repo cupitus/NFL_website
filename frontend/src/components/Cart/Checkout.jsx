@@ -49,7 +49,7 @@ const Checkout = () => {
   const handlePaymentSuccess = async (details) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/checkout/${checkoutId}/pay`,
+        `/api/checkout/${checkoutId}/pay`,
         { paymentStatus: "paid", paymentDetails: details },
         {
           headers: {
@@ -67,9 +67,7 @@ const Checkout = () => {
   const handleFinalizeCheckout = async (checkoutId) => {
     try {
       await axios.post(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/api/checkout/${checkoutId}/finalize`,
+        `/api/checkout/${checkoutId}/finalize`,
         {},
         {
           headers: {
