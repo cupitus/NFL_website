@@ -10,7 +10,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://nfl-website-beta.vercel.app/$1"
+      "destination": "https://nfl-website-beta.vercel.app/api/$1"
     },
     { "source": "/(.*)", "destination": "/" }
   ]
