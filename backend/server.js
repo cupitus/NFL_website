@@ -43,16 +43,16 @@ app.use("/api/admin/products", productAdminRoutes);
 app.use("/api/admin/orders", adminOrderRoutes);
 
 // Check if the VERCEL environment variable exists (Vercel sets this automatically)
-if (process.env.VERCEL) {
-  // We are in the Vercel environment (or any environment where VERCEL is set)
-  // Vercel handles the listening part, so we just export the app
-  module.exports = app;
-  console.log("Running on Vercel, exporting app..."); // Optional log
-} else {
-  // We are not in Vercel, assume local development
-  // Start the server listener
-  const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 3000
-  app.listen(PORT, () => {
-    console.log(`Server is running locally on http://localhost:${PORT}`);
-  });
-}
+// if (process.env.VERCEL) {
+// We are in the Vercel environment (or any environment where VERCEL is set)
+// Vercel handles the listening part, so we just export the app
+module.exports = app;
+console.log("Running on Vercel, exporting app..."); // Optional log
+// } else {
+//   // We are not in Vercel, assume local development
+//   // Start the server listener
+//   const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 3000
+//   app.listen(PORT, () => {
+//     console.log(`Server is running locally on http://localhost:${PORT}`);
+//   });
+// }
