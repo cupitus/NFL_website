@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users/login`,
+        '/api/users/login',
         userData
       );
       localStorage.setItem("userInfo", JSON.stringify(response.data.user));
@@ -44,7 +44,7 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/users/register`,
+        '/api/users/register',
         userData
       );
       localStorage.setItem("userInfo", JSON.stringify(response.data.user));
