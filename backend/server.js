@@ -57,6 +57,11 @@ console.log("Running on Vercel, exporting app..."); // Optional log
 //   });
 // }
 
+
+
+// Uncomment the following lines if you want to run the server locally line 65 -72 
+
+
 // if (process.env.VERCEL) {
 //   console.log("Running on Vercel, exporting app..."); // Optional log
 // } else {
