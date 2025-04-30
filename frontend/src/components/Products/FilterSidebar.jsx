@@ -189,7 +189,7 @@ const FilterSidebar = () => {
 
       {/* Color Filter */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-medium mb-2">Color</label>
+        <label className="block text-gray-600 font-medium mb-2">Colour</label>
         <div className="flex flex-wrap gap-2">
           {colors.map((color) => (
             <button
