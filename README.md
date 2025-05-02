@@ -24,4 +24,5 @@ then npm run start
 
 NOTE:
 
-- You can be able to edit and delete product in the admin page however you wouldn't be able to add products unless you ahve access to MongoDB database
+- You can be able to edit and delete product in the admin page however you wouldn't be able to add products unless you have access to MongoDB database
+- To access the admin username: admin@example.com password:123456
