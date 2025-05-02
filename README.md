@@ -18,7 +18,7 @@ module.exports = app;
 console.log("Running on Vercel, exporting app..."); // Optional log
 
 
-If its stil isnt working use npm install in backend and frontend file 
+If its still isnt working use npm install in backend and frontend file 
 then npm run start 
 
 
