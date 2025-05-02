@@ -20,7 +20,7 @@ const Home = () => {
     dispatch(
       fetchProductsByFilters({
         gender: "Women",
-        category: "Bottom Wear",
+        category: "Top Wear",
         limit: 8,
       })
     );
